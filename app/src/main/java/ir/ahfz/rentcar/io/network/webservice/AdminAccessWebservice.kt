@@ -1,6 +1,5 @@
 package ir.ahfz.rentcar.io.network.webservice
 
-
 import ir.ahfz.rentcar.io.network.BaseResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -41,44 +40,48 @@ interface AdminAccessWebservice {
     /**
      *  API to add fuel
      */
-    @POST("/api/makes")
+    @POST("/api/fuels")
     fun addFuel(): Call<BaseResponse>
 
     /**
      *  API to add Extra
      */
-    @POST("/api/makes")
+    @POST("/api/extras")
     fun addExtra(): Call<BaseResponse>
 
     /**
-     * API to add colors
+     * API to add cities
      */
-    fun adCity(): Call<BaseResponse>
+    @POST("/api/cities")
+    fun addCity(): Call<BaseResponse>
 
-    @POST("/api/makes")
+    /**
+     * API to add classes
+     */
+    @POST("/api/classes")
     fun addClass(): Call<BaseResponse>
 
     /**
      *  API to color
      */
-    @POST("/api/makes")
+    @POST("/api/colors")
     fun addColor(): Call<BaseResponse>
 
     /**
-     * API to add branche
+     * API to add branches
      */
-    @POST("/api/makes")
+    @POST("/api/branches")
     fun addBranch(): Call<BaseResponse>
 
     /**
-     * API to models under available make
+     * API to add models
      */
-    @POST("/api/makes")
+    @POST("/api/models")
     fun addModel(): Call<BaseResponse>
 
     /**
      * API to add car
      */
-    @POST("/api/makes")
+    @POST("/api/cars")
     fun addCar(): Call<BaseResponse>
 }

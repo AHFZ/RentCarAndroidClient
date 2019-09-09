@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Rent Car</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_agreement">By login, you agree our Term of use and policy.\nFor more information please click here.</string>
+    <string name="rental_car">RENTAL CAR</string>
+    <string name="forgot_password_click_here">Forgot Password? Click here!</string>
+    <string name="err_empty_email_password">The Email or Password can not be Empty</string>
+    <string name="register">Register</string>
+    <string name="phone">Phone Number</string>
+    <string name="city">City</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="joint_us_now">Not a member? Joint us now!</string>
+    <string name="err_invalid_email">Invalid email</string>
+    <string name="welcome_back">Welcome back</string>
 </resources>
