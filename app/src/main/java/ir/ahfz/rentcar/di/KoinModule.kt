@@ -3,11 +3,17 @@ package ir.ahfz.rentcar.di
 import com.google.gson.Gson
 import ir.ahfz.rentcar.Utils.JavaNetCookieJar
 import ir.ahfz.rentcar.io.network.webservice.AuthenticationWebservice
+import ir.ahfz.rentcar.io.network.webservice.PrivateAccessWebservice
+import ir.ahfz.rentcar.io.network.webservice.PublicAccessWebservice
 import ir.ahfz.rentcar.repository.AuthenticationRepository
+import ir.ahfz.rentcar.repository.PrivateAccessRepository
+import ir.ahfz.rentcar.repository.PublicAccessRepository
 import ir.ahfz.rentcar.repository.SharePreferencesRepository
 import ir.ahfz.rentcar.ui.authentication.LoginViewModel
 import ir.ahfz.rentcar.ui.authentication.RegistrationViewModel
 import ir.ahfz.rentcar.ui.authentication.ResetPasswordViewModel
+import ir.ahfz.rentcar.ui.home.HomeViewModel
+import ir.ahfz.rentcar.ui.profile.MyReservationViewModel
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,22 +44,28 @@ val retrofitModule = module {
     }
     single {
         return@single CookieManager().apply {
-            setCookiePolicy(CookiePolicy.ACCEPT_ALL)
+            setCookiePolicy(ACCEPT_ALL)
         }
     }
     single { get<Retrofit>().create(AuthenticationWebservice::class.java) }
+    single { get<Retrofit>().create(PublicAccessWebservice::class.java) }
+    single { get<Retrofit>().create(PrivateAccessWebservice::class.java) }
     single { GsonConverterFactory.create(get()) }
     single { Gson() }
 }
 
 val repositoryModule = module {
 
-    single { SharePreferencesRepository(get()) }
     single { AuthenticationRepository(get()) }
+    single { PublicAccessRepository(get()) }
+    single { SharePreferencesRepository(get()) }
+    single { PrivateAccessRepository(get()) }
 }
 
 val viewModelModule = module {
+    viewModel { HomeViewModel(get(), get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { RegistrationViewModel(get()) }
     viewModel { ResetPasswordViewModel() }
+    viewModel { MyReservationViewModel(get()) }
 }

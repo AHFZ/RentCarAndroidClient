@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ir.ahfz.rentcar.io.network.webservice.PublicAccessWebservice
 import ir.ahfz.rentcar.ui.authentication.LoginActivity
+import ir.ahfz.rentcar.ui.home.HomeActivity
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
     }
 }

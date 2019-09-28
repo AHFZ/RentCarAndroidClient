@@ -5,7 +5,7 @@ package ir.ahfz.rentcar.Utils;
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * You may obtain ReservationHistoryResponse copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -36,7 +36,7 @@ import static okhttp3.internal.Util.trimSubstring;
 import static okhttp3.internal.platform.Platform.WARN;
 
 /**
- * A cookie jar that delegates to a {@link java.net.CookieHandler}.
+ * A cookie jar that delegates to ReservationHistoryResponse {@link java.net.CookieHandler}.
  */
 public final class JavaNetCookieJar implements CookieJar {
 
@@ -93,8 +93,8 @@ public final class JavaNetCookieJar implements CookieJar {
     }
 
     /**
-     * Convert a request header to OkHttp's cookies via {@link HttpCookie}. That extra step handles
-     * multiple cookies in a single request header, which {@link Cookie} doesn't support.
+     * Convert ReservationHistoryResponse request header to OkHttp's cookies via {@link HttpCookie}. That extra step handles
+     * multiple cookies in ReservationHistoryResponse single request header, which {@link Cookie} doesn't support.
      */
     private List<Cookie> decodeHeaderAsJavaNetCookies(HttpUrl url, String header) {
         List<Cookie> result = new ArrayList<>();
@@ -104,7 +104,7 @@ public final class JavaNetCookieJar implements CookieJar {
             String name = trimSubstring(header, pos, equalsSign);
             if (name.startsWith("$")) continue;
 
-            // We have either name=value or just a name.
+            // We have either name=value or just ReservationHistoryResponse name.
             String value = equalsSign < pairEnd
                     ? trimSubstring(header, equalsSign + 1, pairEnd)
                     : "";
