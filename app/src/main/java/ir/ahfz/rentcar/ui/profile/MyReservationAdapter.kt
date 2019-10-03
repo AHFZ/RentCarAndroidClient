@@ -1,5 +1,7 @@
 package ir.ahfz.rentcar.ui.profile
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,12 +26,20 @@ class MyReservationAdapter : RecyclerView.Adapter<MyReservationAdapter.ViewHolde
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val reservation = reservationList[position]
-        holder.itemView.text.text = reservation.toString()
+        holder.itemView.tvModel.text = reservation.model
+        holder.itemView.tvBrand.text = reservation.make
+        val backgroundColor = when {
+            reservation.isCompleted == 1 -> Color.parseColor("#03a9f4")
+            reservation.isPaid == 1 -> Color.parseColor("#4caf50")
+            reservation.isPending == 1 -> Color.parseColor("#ff9800")
+            else -> Color.parseColor("#f44336")
+        }
+        holder.itemView.ivStatus.background = ColorDrawable(backgroundColor)
     }
 
     fun addAll(it: List<ReservationHistoryResponse.Reservation>?) {
         if (it != null) {
-            reservationList.addAll(it)
+            reservationList.addAll(it.reversed())
             notifyDataSetChanged()
         }
     }

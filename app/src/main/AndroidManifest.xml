@@ -17,12 +17,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.home.HomeActivity"/>
+
+        <activity android:name=".ui.home.HomeActivity" />
+
         <activity android:name=".ui.authentication.ResetPasswordActivity" />
+
         <activity android:name=".ui.authentication.RegistrationActivity" />
+
         <activity
             android:name=".ui.authentication.LoginActivity"
-            android:theme="@style/LoginTheme" />
+            android:theme="@style/AppTheme.LoginTheme" />
+
+        <activity
+            android:name=".ui.detail.CarDetailActivity"
+            android:parentActivityName=".ui.home.HomeActivity"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,8 +39,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.profile.ProfileDetailActivity"
+            android:label="@string/profile"
             android:parentActivityName=".MainActivity" />
     </application>
 

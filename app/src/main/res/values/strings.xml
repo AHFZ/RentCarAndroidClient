@@ -37,4 +37,8 @@
     <string name="sample_city_name">Tehran</string>
     <string name="sample_name">AMIR HOSSEIN</string>
     <string name="reservation_list">Reservations</string>
+    <string name="profile">Profile</string>
+    <string name="book_it">Book it!</string>
+    <string name="automatic">Automatic</string>
+    <string name="manual">Manual</string>
 </resources>

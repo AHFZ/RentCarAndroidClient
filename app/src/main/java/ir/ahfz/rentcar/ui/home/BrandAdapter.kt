@@ -22,13 +22,16 @@ class BrandAdapter : RecyclerView.Adapter<BrandAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = brandList[position]
-        val brand = CarBrand.valueOf(model.make.toString())
-        holder.itemView.backgroundLayout.setBackgroundColor(brand.color)
-        holder.itemView.brandTextView.text = holder.itemView.context.getString(brand.nameResId)
-        Glide.with(holder.itemView.brandIdLogoImageView)
-            .load(brand.drawable)
-           // .apply(RequestOptions.circleCropTransform())
-            .into(holder.itemView.brandIdLogoImageView)
+        try {
+            val brand = CarBrand.valueOf(model.make.toString())
+            holder.itemView.backgroundLayout.setBackgroundColor(brand.color)
+            holder.itemView.brandTextView.text = holder.itemView.context.getString(brand.nameResId)
+            Glide.with(holder.itemView.brandIdLogoImageView)
+                .load(brand.drawable)
+               // .apply(RequestOptions.circleCropTransform())
+                .into(holder.itemView.brandIdLogoImageView)
+        } catch (e: Exception) {
+        }
     }
 
     fun addBrandList(it: List<MakeResponse.Make>?) {

@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.ahfz.rentcar.R
 import kotlinx.android.synthetic.main.fragment_my_reservation.*
@@ -18,6 +19,12 @@ class MyReservationFragment : Fragment(R.layout.fragment_my_reservation) {
         super.onViewCreated(view, savedInstanceState)
         listMyReservation.layoutManager = LinearLayoutManager(context)
         listMyReservation.adapter = MyReservationAdapter()
+        listMyReservation.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.HORIZONTAL
+            )
+        )
 
         viewModel.value.reservationLiveData.observe(this, Observer {
             if (listMyReservation != null && listMyReservation.adapter != null) {

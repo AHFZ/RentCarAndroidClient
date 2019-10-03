@@ -1,5 +1,6 @@
 package ir.ahfz.rentcar.ui.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import ir.ahfz.rentcar.MyApplication
 import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.io.network.model.CarResponse
+import ir.ahfz.rentcar.ui.detail.CarDetailActivity
 import kotlinx.android.synthetic.main.item_car.view.*
 
 class CarAdapter : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
@@ -41,5 +43,15 @@ class CarAdapter : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class CarViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    inner class CarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        init {
+            view.setOnClickListener {
+                view.context.startActivity(
+                    Intent(view.context, CarDetailActivity::class.java)
+                        .putExtra(CarDetailActivity.CAR_DATA, cars[adapterPosition])
+                )
+            }
+        }
+    }
 }

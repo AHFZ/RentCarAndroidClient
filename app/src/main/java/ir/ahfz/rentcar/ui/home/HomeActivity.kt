@@ -42,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
 
         list_brand.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         list_brand.adapter = brandAdapter
+
         list_car.layoutManager = LinearLayoutManager(this)
         list_car.adapter = adapter
 

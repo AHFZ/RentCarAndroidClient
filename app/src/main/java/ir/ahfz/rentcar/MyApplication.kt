@@ -21,6 +21,16 @@ class MyApplication : Application() {
     }
 
     companion object {
-        var base_url = "http://192.168.1.100"
+        const val base_url = "http://192.168.1.100"
     }
 }
+/*
+
+        Car detail
+        Reserve car
+        Save session
+        Connect Activity
+        Search and filter
+        Logout & Login entry
+
+ */
