@@ -1,14 +1,15 @@
 package ir.ahfz.rentcar.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.Window
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
 import com.bumptech.glide.Glide
 import ir.ahfz.rentcar.MyApplication
 import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.io.network.model.CarResponse
+import ir.ahfz.rentcar.ui.book.BookCarActivity
 import kotlinx.android.synthetic.main.activity_car_detail.*
 
 class CarDetailActivity : AppCompatActivity(R.layout.activity_car_detail) {
@@ -47,5 +48,10 @@ class CarDetailActivity : AppCompatActivity(R.layout.activity_car_detail) {
 
     companion object {
         const val CAR_DATA = "car"
+    }
+
+    fun bookIt(view: View) {
+        startActivity(Intent(this, BookCarActivity::class.java))
+        finish()
     }
 }

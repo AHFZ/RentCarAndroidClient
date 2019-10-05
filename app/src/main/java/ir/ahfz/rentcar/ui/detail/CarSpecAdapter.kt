@@ -21,6 +21,15 @@ class CarSpecAdapter : RecyclerView.Adapter<CarSpecAdapter.ViewHolder>() {
         R.drawable.format_color_fill,
         R.drawable.calendar
     )
+    private val titles = arrayOf(
+        R.string.price_per_day,
+        R.string.gearbox,
+        R.string.fuel,
+        R.string.seat,
+        R.string.type,
+        R.string.color,
+        R.string.year_old
+    )
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, type: Int): ViewHolder = ViewHolder(
         LayoutInflater.from(viewGroup.context)
@@ -48,10 +57,10 @@ class CarSpecAdapter : RecyclerView.Adapter<CarSpecAdapter.ViewHolder>() {
                 car.capacity
             }
             4 -> {
-                car.type
+                car.type // toString
             }
             5 -> {
-                car.color
+                if (car.color.isNullOrBlank()) viewHolder.getString(R.string.white) else car.color
             }
             6 -> {
                 car.year
@@ -61,6 +70,7 @@ class CarSpecAdapter : RecyclerView.Adapter<CarSpecAdapter.ViewHolder>() {
         Glide.with(viewHolder.itemView)
             .load(icons[pos])
             .into(viewHolder.itemView.ivSpec)
+        viewHolder.itemView.tvSpecTitle.text = viewHolder.getString(titles[pos])
     }
 
     fun setCar(car: CarResponse.Car) {

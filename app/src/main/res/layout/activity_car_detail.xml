@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
+        android:padding="24dp"
         android:contentDescription=""
         android:scaleType="centerCrop"
         android:translationX="32dp" />
@@ -74,6 +75,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/book_it" />
+        android:text="@string/book_it"
+        android:onClick="bookIt"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

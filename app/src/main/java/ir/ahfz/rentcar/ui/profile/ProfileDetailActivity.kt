@@ -22,7 +22,7 @@ class ProfileDetailActivity : AppCompatActivity(R.layout.activity_profile_detail
         nestedScrollView.setOnScrollChangeListener { v: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 if (scrollY > 20) {
-                    appBarLayout.elevation = 16F
+                    appBarLayout.elevation = 8 * resources.displayMetrics.density
                 } else
                     appBarLayout.elevation = 0F
         }
@@ -45,6 +45,13 @@ class ProfileDetailActivity : AppCompatActivity(R.layout.activity_profile_detail
         })
         viewModel.value.errorLiveData.observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            finish()
+        })
+        viewModel.value.profileLiveData.observe(this, Observer {
+            tvProfileName.text = it.name
+            tvLocation.text = it.city
+            tvPhoneNumber.text = it.phone
+            tvEmail.text = it.email
         })
     }
 }

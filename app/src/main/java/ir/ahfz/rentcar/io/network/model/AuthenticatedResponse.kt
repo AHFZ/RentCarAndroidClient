@@ -6,7 +6,7 @@ data class AuthenticatedResponse(
     var email: String? = null,
     var isAdmin: String? = null,
     var address: String? = null,
-    var city: Any? = null,
+    var city: String? = null,
     var phone: String? = null,
     var createdAt: String? = null,
     var updatedAt: String? = null

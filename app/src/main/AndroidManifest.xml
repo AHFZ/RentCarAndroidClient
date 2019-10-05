@@ -30,7 +30,7 @@
 
         <activity
             android:name=".ui.detail.CarDetailActivity"
-            android:parentActivityName=".ui.home.HomeActivity"/>
+            android:parentActivityName=".ui.home.HomeActivity" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -44,6 +44,10 @@
             android:name=".ui.profile.ProfileDetailActivity"
             android:label="@string/profile"
             android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".ui.book.BookCarActivity"
+            android:label="@string/book_it" />
     </application>
 
 </manifest>

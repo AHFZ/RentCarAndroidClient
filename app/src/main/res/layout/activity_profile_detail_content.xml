@@ -51,8 +51,7 @@
         android:id="@+id/tvEmail"
         style="@style/AppTheme.SubTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sample_email" />
+        android:layout_height="wrap_content" />
 
     <TextView
         style="@style/AppTheme.Title"
@@ -64,8 +63,7 @@
         android:id="@+id/tvPhoneNumber"
         style="@style/AppTheme.SubTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/_09364936401" />
+        android:layout_height="wrap_content" />
 
     <TextView
         style="@style/AppTheme.Title"

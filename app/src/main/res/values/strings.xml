@@ -41,4 +41,12 @@
     <string name="book_it">Book it!</string>
     <string name="automatic">Automatic</string>
     <string name="manual">Manual</string>
+    <string name="white">White</string>
+    <string name="price_per_day">Price per day</string>
+    <string name="gearbox">Gear box</string>
+    <string name="fuel">Fuel</string>
+    <string name="seat">Seat</string>
+    <string name="type">Type</string>
+    <string name="color">Color</string>
+    <string name="year_old">Year old</string>
 </resources>
