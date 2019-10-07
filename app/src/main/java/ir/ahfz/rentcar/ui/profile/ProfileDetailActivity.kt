@@ -8,8 +8,11 @@ import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.ahfz.rentcar.R
+import ir.ahfz.rentcar.io.network.model.AuthenticatedResponse
 import kotlinx.android.synthetic.main.activity_profile_detail.*
 import kotlinx.android.synthetic.main.activity_profile_detail_content.*
+import kotlinx.android.synthetic.main.activity_profile_detail_content.listMyReservation
+import kotlinx.android.synthetic.main.fragment_my_reservation.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,6 +22,9 @@ class ProfileDetailActivity : AppCompatActivity(R.layout.activity_profile_detail
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val user = intent.getParcelableExtra<AuthenticatedResponse>("user")
+        viewModel.value.profileLiveData.postValue(user)
         nestedScrollView.setOnScrollChangeListener { v: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 if (scrollY > 20) {
@@ -38,9 +44,15 @@ class ProfileDetailActivity : AppCompatActivity(R.layout.activity_profile_detail
             adapter = MyReservationAdapter()
         }
 
+        tvLocation.setOnClickListener {
+            tvLocation.text = viewModel.value.profileLiveData.value?.address
+        }
+
         viewModel.value.reservationLiveData.observe(this, Observer {
-            if (listMyReservation != null && listMyReservation.adapter != null) {
+            if (listMyReservation != null && listMyReservation.adapter != null && it.isNotEmpty()) {
                 (listMyReservation.adapter as MyReservationAdapter).addAll(it)
+            } else {
+                layoutInflater.inflate(R.layout.item_no_reservation, linearLayout, true)
             }
         })
         viewModel.value.errorLiveData.observe(this, Observer {

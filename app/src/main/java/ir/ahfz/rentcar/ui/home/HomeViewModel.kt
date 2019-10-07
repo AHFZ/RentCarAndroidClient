@@ -21,7 +21,7 @@ class HomeViewModel(
         errorLiveData.postValue(throwable.message)
     }
     val errorLiveData = MutableLiveData<String?>()
-    val userAuthLiveData = MutableLiveData<AuthenticatedResponse>()
+    val userAuthLiveData = MutableLiveData<AuthenticatedResponse?>()
     val carListLiveData = MutableLiveData<List<CarResponse.Car>>()
     val makeListLiveData = MutableLiveData<List<MakeResponse.Make>>()
 
@@ -29,10 +29,21 @@ class HomeViewModel(
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             val isAuthResponse = authenticationRepository.isAuthenticated()
             userAuthLiveData.postValue(isAuthResponse)
+        }
+        viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             val makeResponse = publicAccessRepository.getMakes()
             makeListLiveData.postValue(makeResponse.body()?.makes)
+        }
+        viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             val carResponse = publicAccessRepository.getCars()
             carListLiveData.postValue(carResponse.body()?.cars)
+        }
+    }
+
+    fun logout() {
+        viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
+            authenticationRepository.logout()
+            userAuthLiveData.postValue(null)
         }
     }
 }

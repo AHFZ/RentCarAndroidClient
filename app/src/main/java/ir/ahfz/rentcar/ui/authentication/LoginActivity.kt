@@ -9,11 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.Utils.setLightStatusBar
+import ir.ahfz.rentcar.io.network.model.AuthenticatedResponse
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class LoginActivity : AppCompatActivity(), Observer<String?> {
+class LoginActivity : AppCompatActivity(), Observer<AuthenticatedResponse?> {
 
     private val loginViewModel = viewModel<LoginViewModel>()
 
@@ -52,9 +53,9 @@ class LoginActivity : AppCompatActivity(), Observer<String?> {
         }
     }
 
-    override fun onChanged(it: String?) {
-        setResult(Activity.RESULT_OK)
-        Toast.makeText(this, "${getString(R.string.welcome_back)}, $it", Toast.LENGTH_SHORT).show()
+    override fun onChanged(it: AuthenticatedResponse?) {
+        setResult(Activity.RESULT_OK, Intent().putExtra("user", it))
+        Toast.makeText(this, "${getString(R.string.welcome_back)}, ${it?.name}", Toast.LENGTH_SHORT).show()
         finish()
     }
 

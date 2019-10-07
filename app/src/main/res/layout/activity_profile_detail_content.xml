@@ -19,10 +19,12 @@
 
     <TextView
         android:id="@+id/tvProfileName"
-        android:layout_width="wrap_content"
+        android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:ellipsize="end"
         android:letterSpacing="0.1"
+        android:maxLines="1"
         android:padding="8dp"
         android:text="@string/sample_name"
         android:textAllCaps="true"

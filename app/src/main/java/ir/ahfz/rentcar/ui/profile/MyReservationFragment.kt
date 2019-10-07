@@ -27,8 +27,10 @@ class MyReservationFragment : Fragment(R.layout.fragment_my_reservation) {
         )
 
         viewModel.value.reservationLiveData.observe(this, Observer {
-            if (listMyReservation != null && listMyReservation.adapter != null) {
+            if (listMyReservation != null && listMyReservation.adapter != null && it.isNotEmpty()) {
                 (listMyReservation.adapter as MyReservationAdapter).addAll(it)
+            } else {
+                activity!!.layoutInflater.inflate(R.layout.item_no_reservation, null, false)
             }
         })
         viewModel.value.errorLiveData.observe(this, Observer {

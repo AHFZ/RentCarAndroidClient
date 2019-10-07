@@ -53,4 +53,7 @@
     <string name="from">From</string>
     <string name="activity_book_car_header">Make your choice</string>
     <string name="accept_and_pay">Accept and pay</string>
+    <string name="feature_brand">Feature Brand</string>
+    <string name="cars">Cars</string>
+    <string name="please_wait">Please wait</string>
 </resources>

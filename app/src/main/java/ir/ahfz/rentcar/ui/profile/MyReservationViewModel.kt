@@ -26,7 +26,7 @@ class MyReservationViewModel(
 
     init {
         getReservationHistoryList()
-        getProfileDetail()
+       // getProfileDetail()
     }
 
     fun getReservationHistoryList() {

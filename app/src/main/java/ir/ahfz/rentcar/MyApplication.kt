@@ -26,11 +26,11 @@ class MyApplication : Application() {
 }
 /*
 
-        Car detail
-        Reserve car
+        Car detail*
+        Reserve car+
         Save session
-        Connect Activity
+        Connect Activity*
         Search and filter
-        Logout & Login entry
+        Logout & Login entry*
 
  */
