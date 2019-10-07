@@ -49,4 +49,8 @@
     <string name="type">Type</string>
     <string name="color">Color</string>
     <string name="year_old">Year old</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
+    <string name="activity_book_car_header">Make your choice</string>
+    <string name="accept_and_pay">Accept and pay</string>
 </resources>

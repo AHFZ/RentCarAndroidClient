@@ -12,6 +12,7 @@ import ir.ahfz.rentcar.repository.SharePreferencesRepository
 import ir.ahfz.rentcar.ui.authentication.LoginViewModel
 import ir.ahfz.rentcar.ui.authentication.RegistrationViewModel
 import ir.ahfz.rentcar.ui.authentication.ResetPasswordViewModel
+import ir.ahfz.rentcar.ui.book.BookCarViewModel
 import ir.ahfz.rentcar.ui.home.HomeViewModel
 import ir.ahfz.rentcar.ui.profile.MyReservationViewModel
 import okhttp3.OkHttpClient
@@ -68,4 +69,5 @@ val viewModelModule = module {
     viewModel { RegistrationViewModel(get()) }
     viewModel { ResetPasswordViewModel() }
     viewModel { MyReservationViewModel(get(), get()) }
+    viewModel { BookCarViewModel(get()) }
 }

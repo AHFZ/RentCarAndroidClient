@@ -15,8 +15,10 @@
         android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/background_rounded_gray"
+        android:focusable="false"
         android:hint="@string/search_hint"
         android:padding="12dp"
+        android:windowSoftInputMode="stateAlwaysHidden"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/frameLayout_filter"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,9 +32,9 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText_search"
-        app:layout_constraintEnd_toEndOf="@+id/editText_search"
-        app:layout_constraintTop_toTopOf="@+id/editText_search">
+        app:layout_constraintBottom_toBottomOf="@+id/etSearch"
+        app:layout_constraintEnd_toEndOf="@+id/etSearch"
+        app:layout_constraintTop_toTopOf="@+id/etSearch">
 
         <ImageView
             android:id="@+id/imageView_search"
