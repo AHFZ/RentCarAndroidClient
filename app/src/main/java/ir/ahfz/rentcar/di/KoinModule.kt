@@ -1,14 +1,13 @@
 package ir.ahfz.rentcar.di
 
+import androidx.room.Room
 import com.google.gson.Gson
 import ir.ahfz.rentcar.Utils.JavaNetCookieJar
+import ir.ahfz.rentcar.io.database.DataBase
 import ir.ahfz.rentcar.io.network.webservice.AuthenticationWebservice
 import ir.ahfz.rentcar.io.network.webservice.PrivateAccessWebservice
 import ir.ahfz.rentcar.io.network.webservice.PublicAccessWebservice
-import ir.ahfz.rentcar.repository.AuthenticationRepository
-import ir.ahfz.rentcar.repository.PrivateAccessRepository
-import ir.ahfz.rentcar.repository.PublicAccessRepository
-import ir.ahfz.rentcar.repository.SharePreferencesRepository
+import ir.ahfz.rentcar.repository.*
 import ir.ahfz.rentcar.ui.authentication.LoginViewModel
 import ir.ahfz.rentcar.ui.authentication.RegistrationViewModel
 import ir.ahfz.rentcar.ui.authentication.ResetPasswordViewModel
@@ -23,9 +22,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.CookieManager
-import java.net.CookiePolicy
 import java.net.CookiePolicy.ACCEPT_ALL
-
 
 val retrofitModule = module {
     single<Retrofit> {
@@ -61,10 +58,20 @@ val repositoryModule = module {
     single { PublicAccessRepository(get()) }
     single { SharePreferencesRepository(get()) }
     single { PrivateAccessRepository(get()) }
+    single { CarRepository(get()) }
+}
+
+val databaseModule = module {
+    single {
+        Room.databaseBuilder(get(), DataBase::class.java, "rentalCar")
+            .allowMainThreadQueries()
+            .build()
+    }
+    single { get<DataBase>().provideCarDao() }
 }
 
 val viewModelModule = module {
-    viewModel { HomeViewModel(get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { LoginViewModel(get()) }
     viewModel { RegistrationViewModel(get()) }
     viewModel { ResetPasswordViewModel() }

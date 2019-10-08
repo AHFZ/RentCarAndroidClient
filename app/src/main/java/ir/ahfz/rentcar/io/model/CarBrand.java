@@ -1,4 +1,4 @@
-package ir.ahfz.rentcar.io.network.model;
+package ir.ahfz.rentcar.io.model;
 
 import android.graphics.Color;
 

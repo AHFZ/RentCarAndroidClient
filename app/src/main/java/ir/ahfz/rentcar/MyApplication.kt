@@ -1,6 +1,7 @@
 package ir.ahfz.rentcar
 
 import android.app.Application
+import ir.ahfz.rentcar.di.databaseModule
 import ir.ahfz.rentcar.di.repositoryModule
 import ir.ahfz.rentcar.di.retrofitModule
 import ir.ahfz.rentcar.di.viewModelModule
@@ -16,7 +17,7 @@ class MyApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@MyApplication)
-            modules(listOf(retrofitModule, repositoryModule, viewModelModule))
+            modules(listOf(retrofitModule, repositoryModule, viewModelModule, databaseModule))
         }
     }
 

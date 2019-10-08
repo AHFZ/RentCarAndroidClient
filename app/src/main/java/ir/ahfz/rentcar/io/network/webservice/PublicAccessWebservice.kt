@@ -1,6 +1,6 @@
 package ir.ahfz.rentcar.io.network.webservice
 
-import ir.ahfz.rentcar.io.network.model.*
+import ir.ahfz.rentcar.io.model.*
 import retrofit2.Call
 import retrofit2.http.GET
 

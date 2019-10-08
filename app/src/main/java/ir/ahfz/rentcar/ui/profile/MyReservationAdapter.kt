@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.ahfz.rentcar.R
-import ir.ahfz.rentcar.io.network.model.ReservationHistoryResponse
+import ir.ahfz.rentcar.io.model.ReservationHistoryResponse
 import kotlinx.android.synthetic.main.item_reservation.view.*
 
 class MyReservationAdapter : RecyclerView.Adapter<MyReservationAdapter.ViewHolder>() {

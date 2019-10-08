@@ -17,13 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <fragment
-                android:id="@+id/fragment_search"
-                android:name="ir.ahfz.rentcar.ui.home.SearchFragment"
-                class="ir.ahfz.rentcar.ui.home.SearchFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_search" />
+            <include layout="@layout/fragment_search" />
 
             <TextView
                 android:layout_width="match_parent"

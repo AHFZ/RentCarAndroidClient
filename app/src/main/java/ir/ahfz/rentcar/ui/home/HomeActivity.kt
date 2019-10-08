@@ -8,17 +8,20 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.ui.authentication.LoginActivity
 import ir.ahfz.rentcar.ui.profile.ProfileDetailActivity
+import ir.ahfz.rentcar.ui.search.SearchCarActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home_toolbar.*
+import kotlinx.android.synthetic.main.fragment_search.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(R.layout.activity_home), View.OnClickListener {
 
     private val RQ = 1
     private val homeViewModel = viewModel<HomeViewModel>()
@@ -28,13 +31,12 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
         waitDialog = AlertDialog.Builder(this)
             .setMessage(getString(R.string.please_wait))
             .setCancelable(false)
             .create()
 
-        nestedScrollView.setOnScrollChangeListener { v: NestedScrollView?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
+        nestedScrollView.setOnScrollChangeListener { v: NestedScrollView?, _: Int, scrollY: Int, _: Int, _: Int ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 if (scrollY > 20) {
                     appBarLayout.elevation = 8F
@@ -78,6 +80,8 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             waitDialog.dismiss()
         })
+        ivFilter.setOnClickListener(this)
+        etSearch.setOnClickListener(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -90,5 +94,14 @@ class HomeActivity : AppCompatActivity() {
     fun logout(view: View) {
         homeViewModel.value.logout()
         waitDialog.show()
+    }
+
+    override fun onClick(v: View?) {
+        val toBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this,
+            searchLayout,
+            getString(R.string.search_hint)
+        ).toBundle()
+        startActivity(Intent(this, SearchCarActivity::class.java), toBundle)
     }
 }

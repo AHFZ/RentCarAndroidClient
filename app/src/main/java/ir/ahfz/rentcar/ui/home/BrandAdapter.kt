@@ -5,10 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import ir.ahfz.rentcar.R
-import ir.ahfz.rentcar.io.network.model.CarBrand
-import ir.ahfz.rentcar.io.network.model.MakeResponse
+import ir.ahfz.rentcar.io.model.CarBrand
+import ir.ahfz.rentcar.io.model.MakeResponse
 import kotlinx.android.synthetic.main.item_brand.view.*
 
 class BrandAdapter : RecyclerView.Adapter<BrandAdapter.ViewHolder>() {

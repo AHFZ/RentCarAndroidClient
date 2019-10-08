@@ -48,6 +48,10 @@
         <activity
             android:name=".ui.book.BookCarActivity"
             android:label="@string/book_it" />
+
+        <activity
+            android:name=".ui.search.SearchCarActivity"
+            android:label="@string/search_hint" />
     </application>
 
 </manifest>

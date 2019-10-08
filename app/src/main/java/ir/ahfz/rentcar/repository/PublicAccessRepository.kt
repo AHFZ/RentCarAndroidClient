@@ -1,6 +1,6 @@
 package ir.ahfz.rentcar.repository
 
-import ir.ahfz.rentcar.io.network.model.*
+import ir.ahfz.rentcar.io.model.*
 import ir.ahfz.rentcar.io.network.webservice.PublicAccessWebservice
 import retrofit2.Response
 import retrofit2.awaitResponse

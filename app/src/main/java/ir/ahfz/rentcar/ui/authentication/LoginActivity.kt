@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.Utils.setLightStatusBar
-import ir.ahfz.rentcar.io.network.model.AuthenticatedResponse
+import ir.ahfz.rentcar.io.model.AuthenticatedResponse
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -19,9 +19,11 @@
 
     <TextView
         android:id="@+id/tvProfileName"
-        android:layout_width="288dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:ellipsize="end"
         android:letterSpacing="0.1"
         android:maxLines="1"

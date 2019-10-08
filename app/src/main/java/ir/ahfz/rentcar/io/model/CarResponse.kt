@@ -1,7 +1,9 @@
-package ir.ahfz.rentcar.io.network.model
+package ir.ahfz.rentcar.io.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import ir.ahfz.rentcar.io.network.BaseResponse
 
 /**
@@ -12,8 +14,10 @@ data class CarResponse(var cars: List<Car>? = null) : BaseResponse() {
     /**
      * Data model for Car
      */
+    @Entity
     data class Car(
-        var id: String? = null,
+        @PrimaryKey
+        var id: String = "",
         var modelId: String? = null,
         var fuel: String? = null,
         var registration: String? = null,
@@ -33,9 +37,9 @@ data class CarResponse(var cars: List<Car>? = null) : BaseResponse() {
         var make: String? = null,
         var model: String? = null,
         var branch: String? = null
-    ): Parcelable {
+    ) : Parcelable {
         constructor(parcel: Parcel) : this(
-            parcel.readString(),
+            parcel.readString() ?: "",
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.ahfz.rentcar.R
-import ir.ahfz.rentcar.io.network.model.ExtraResponse
+import ir.ahfz.rentcar.io.model.ExtraResponse
 import kotlinx.android.synthetic.main.item_book_option.view.*
 
 class OptionAdapter : RecyclerView.Adapter<OptionAdapter.ViewHolder>() {

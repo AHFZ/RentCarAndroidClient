@@ -1,8 +1,8 @@
 package ir.ahfz.rentcar.repository
 
-import ir.ahfz.rentcar.io.network.model.AuthenticatedResponse
-import ir.ahfz.rentcar.io.network.model.LoginRequest
-import ir.ahfz.rentcar.io.network.model.RegisterRequest
+import ir.ahfz.rentcar.io.model.AuthenticatedResponse
+import ir.ahfz.rentcar.io.model.LoginRequest
+import ir.ahfz.rentcar.io.model.RegisterRequest
 import ir.ahfz.rentcar.io.network.webservice.AuthenticationWebservice
 import retrofit2.awaitResponse
 

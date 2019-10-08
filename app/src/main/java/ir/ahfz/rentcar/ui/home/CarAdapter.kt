@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ir.ahfz.rentcar.MyApplication
 import ir.ahfz.rentcar.R
-import ir.ahfz.rentcar.io.network.model.CarResponse
+import ir.ahfz.rentcar.io.model.CarResponse
 import ir.ahfz.rentcar.ui.detail.CarDetailActivity
 import kotlinx.android.synthetic.main.item_car.view.*
 

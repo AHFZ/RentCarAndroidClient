@@ -3,8 +3,8 @@ package ir.ahfz.rentcar.ui.profile
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ir.ahfz.rentcar.io.network.model.AuthenticatedResponse
-import ir.ahfz.rentcar.io.network.model.ReservationHistoryResponse
+import ir.ahfz.rentcar.io.model.AuthenticatedResponse
+import ir.ahfz.rentcar.io.model.ReservationHistoryResponse
 import ir.ahfz.rentcar.repository.AuthenticationRepository
 import ir.ahfz.rentcar.repository.PrivateAccessRepository
 import kotlinx.coroutines.CoroutineExceptionHandler

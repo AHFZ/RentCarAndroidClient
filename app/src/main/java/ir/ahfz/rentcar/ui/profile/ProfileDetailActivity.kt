@@ -8,11 +8,10 @@ import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.ahfz.rentcar.R
-import ir.ahfz.rentcar.io.network.model.AuthenticatedResponse
+import ir.ahfz.rentcar.io.model.AuthenticatedResponse
 import kotlinx.android.synthetic.main.activity_profile_detail.*
 import kotlinx.android.synthetic.main.activity_profile_detail_content.*
 import kotlinx.android.synthetic.main.activity_profile_detail_content.listMyReservation
-import kotlinx.android.synthetic.main.fragment_my_reservation.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
