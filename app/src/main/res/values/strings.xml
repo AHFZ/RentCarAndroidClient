@@ -56,4 +56,5 @@
     <string name="feature_brand">Feature Brand</string>
     <string name="cars">Cars</string>
     <string name="please_wait">Please wait</string>
+    <string name="succssfully_booked">Car successfully booked</string>
 </resources>

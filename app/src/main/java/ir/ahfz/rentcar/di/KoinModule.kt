@@ -1,8 +1,11 @@
 package ir.ahfz.rentcar.di
 
+import android.content.Context
 import androidx.room.Room
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.google.gson.Gson
-import ir.ahfz.rentcar.Utils.JavaNetCookieJar
 import ir.ahfz.rentcar.io.database.DataBase
 import ir.ahfz.rentcar.io.network.webservice.AuthenticationWebservice
 import ir.ahfz.rentcar.io.network.webservice.PrivateAccessWebservice
@@ -21,8 +24,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.net.CookieManager
-import java.net.CookiePolicy.ACCEPT_ALL
 
 val retrofitModule = module {
     single<Retrofit> {
@@ -36,14 +37,15 @@ val retrofitModule = module {
     single {
         OkHttpClient.Builder()
             .protocols(listOf(Protocol.HTTP_1_1))
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
-            .cookieJar(JavaNetCookieJar(get<CookieManager>()))
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .cookieJar(get<PersistentCookieJar>())
             .build()
     }
     single {
-        return@single CookieManager().apply {
-            setCookiePolicy(ACCEPT_ALL)
-        }
+        return@single PersistentCookieJar(
+            SetCookieCache(),
+            SharedPrefsCookiePersistor(get<Context>())
+        )
     }
     single { get<Retrofit>().create(AuthenticationWebservice::class.java) }
     single { get<Retrofit>().create(PublicAccessWebservice::class.java) }
@@ -76,5 +78,5 @@ val viewModelModule = module {
     viewModel { RegistrationViewModel(get()) }
     viewModel { ResetPasswordViewModel() }
     viewModel { MyReservationViewModel(get(), get()) }
-    viewModel { BookCarViewModel(get()) }
+    viewModel { BookCarViewModel(get(), get()) }
 }

@@ -51,7 +51,7 @@ class AuthenticationRepository(private val authenticationWebservice: Authenticat
         ).awaitResponse()
 
         if (!awaitResponse.isSuccessful) {
-            throw Exception(awaitResponse.message())
+            throw Exception(awaitResponse.code().toString())
         }
 
         val isAuthenticated = isAuthenticated()

@@ -29,7 +29,7 @@ class CarDetailActivity : AppCompatActivity(R.layout.activity_car_detail) {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = "Car Specification"
-        tvCarMake.text = car.make
+        tvCarMake.text = car!!.make
         tvCarModel.text = car.model
         Glide
             .with(this)
@@ -41,17 +41,22 @@ class CarDetailActivity : AppCompatActivity(R.layout.activity_car_detail) {
             this.adapter = this@CarDetailActivity.adapter.also {
                 it.setCar(car)
             }
-          //  LinearSnapHelper().attachToRecyclerView(this)
+            //  LinearSnapHelper().attachToRecyclerView(this)
         }
 
     }
 
-    companion object {
-        const val CAR_DATA = "car"
+    public companion object {
+        public const val CAR_DATA = "car"
     }
 
     fun bookIt(view: View) {
-        startActivity(Intent(this, BookCarActivity::class.java))
+        startActivity(
+            Intent(this, BookCarActivity::class.java)
+                .putExtra(
+                    CAR_DATA, intent.getParcelableExtra<CarResponse.Car>(CAR_DATA)
+                )
+        )
         finish()
     }
 }
