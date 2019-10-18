@@ -1,6 +1,7 @@
 package ir.ahfz.rentcar.ui.authentication
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -41,7 +42,7 @@ class RegistrationActivity : AppCompatActivity(), Observer<AuthenticatedResponse
 
     override fun onChanged(t: AuthenticatedResponse?) {
         Toast.makeText(this, "Hi ${t?.name}", Toast.LENGTH_SHORT).show()
-        setResult(Activity.RESULT_OK)
+        setResult(Activity.RESULT_OK, Intent().putExtra("user", t))
         finish()
     }
 }

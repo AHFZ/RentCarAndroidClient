@@ -54,10 +54,7 @@ class AuthenticationRepository(private val authenticationWebservice: Authenticat
             throw Exception(awaitResponse.code().toString())
         }
 
-        val isAuthenticated = isAuthenticated()
-        if (isAuthenticated != null)
-            throw Exception("Unknown error")
-        return isAuthenticated
+        return isAuthenticated() ?: throw Exception("Unknown error")
     }
 
     suspend fun logout() {

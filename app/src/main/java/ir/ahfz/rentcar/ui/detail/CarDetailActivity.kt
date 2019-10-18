@@ -1,5 +1,6 @@
 package ir.ahfz.rentcar.ui.detail
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -57,6 +58,11 @@ class CarDetailActivity : AppCompatActivity(R.layout.activity_car_detail) {
                     CAR_DATA, intent.getParcelableExtra<CarResponse.Car>(CAR_DATA)
                 )
         )
-        finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK)
+            finish()
     }
 }

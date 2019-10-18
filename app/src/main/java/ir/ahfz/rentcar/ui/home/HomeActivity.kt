@@ -86,7 +86,7 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home), View.OnClickList
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == RQ) {
+        if (resultCode == Activity.RESULT_OK) {
             homeViewModel.value.userAuthLiveData.postValue(data?.getParcelableExtra("user"))
         }
     }

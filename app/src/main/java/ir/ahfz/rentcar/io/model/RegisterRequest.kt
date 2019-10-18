@@ -9,5 +9,5 @@ data class RegisterRequest(
     var password_confirmation: String?,
     var address: String?,
     var city: String?,
-    var contact: String?
+    var phone: String?
 ) : BaseRequest()

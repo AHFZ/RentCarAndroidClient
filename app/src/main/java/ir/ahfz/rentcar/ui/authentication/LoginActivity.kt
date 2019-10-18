@@ -42,7 +42,6 @@ class LoginActivity : AppCompatActivity(), Observer<AuthenticatedResponse?> {
     }
 
     private fun setData() {
-
         val password = intent.getStringExtra("password")
         val email = intent.getStringExtra("email")
         if (password != null && email != null) {
@@ -55,7 +54,8 @@ class LoginActivity : AppCompatActivity(), Observer<AuthenticatedResponse?> {
 
     override fun onChanged(it: AuthenticatedResponse?) {
         setResult(Activity.RESULT_OK, Intent().putExtra("user", it))
-        Toast.makeText(this, "${getString(R.string.welcome_back)}, ${it?.name}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "${getString(R.string.welcome_back)}, ${it?.name}", Toast.LENGTH_SHORT)
+            .show()
         finish()
     }
 
@@ -73,10 +73,17 @@ class LoginActivity : AppCompatActivity(), Observer<AuthenticatedResponse?> {
             else -> null
         }
         if (targetActivity != null) {
-            startActivity(Intent(this, targetActivity))
-            finish()
+            startActivityForResult(Intent(this, targetActivity), 0)
         } else
             Toast.makeText(this, "Not implemented", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            setResult(Activity.RESULT_OK, data)
+            finish()
+        }
     }
 
 }
