@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.io.model.CarResponse
+import ir.ahfz.rentcar.io.model.CityResponse
 import ir.ahfz.rentcar.io.model.ExtraResponse
 import ir.ahfz.rentcar.io.model.ReservationRequest
 import ir.ahfz.rentcar.repository.PrivateAccessRepository
@@ -20,11 +21,14 @@ class BookCarViewModel(
     private val privateAccessRepository: PrivateAccessRepository
 ) : ViewModel() {
 
+    var pickupLocation: CityResponse.City? = null
+    var returnLocation: CityResponse.City? = null
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         errorLiveData.postValue(throwable.message)
     }
     val errorLiveData = MutableLiveData<String?>()
     val extraResponseLiveData = MutableLiveData<ExtraResponse>()
+    var cities = ArrayList<CityResponse.City>()
     val pickupDate = MutableLiveData<String>()
     val returnDate = MutableLiveData<String>()
     lateinit var car: CarResponse.Car
@@ -34,6 +38,8 @@ class BookCarViewModel(
             val extras = publicAccessRepository.getExtras()
             if (extras.isSuccessful)
                 extraResponseLiveData.postValue(extras.body())
+            val citiesResponse = publicAccessRepository.getCities()
+            cities = citiesResponse.body()!!.cities as ArrayList<CityResponse.City>
         }
     }
 
@@ -51,6 +57,8 @@ class BookCarViewModel(
         reservationRequest.returnDate = returnDate.value
         reservationRequest.selectedCarID = car.id
         reservationRequest.totalPrice = calculatePrice()
+        reservationRequest.pickupLocation = pickupLocation?.id.toString()
+        reservationRequest.returnLocation = returnLocation?.id.toString()
 
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             privateAccessRepository.saveReservation(reservationRequest).apply {

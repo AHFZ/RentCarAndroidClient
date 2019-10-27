@@ -20,13 +20,13 @@ interface AdminAccessWebservice {
     fun confirmReservation(): Call<BaseResponse>
 
     /**
-     * API to confirm that car was delivered to customer
+     * API to confirm that ic_car was delivered to customer
      */
     @GET("/admin/api/reservations/deliver")
     fun confirmReservationDelivery(): Call<BaseResponse>
 
     /**
-     * API to confirm that car was returned and set reservation as completed
+     * API to confirm that ic_car was returned and set reservation as completed
      */
     @GET("/admin/api/reservations/returned")
     fun confirmReservationCompletelyReturn()
@@ -80,7 +80,7 @@ interface AdminAccessWebservice {
     fun addModel(): Call<BaseResponse>
 
     /**
-     * API to add car
+     * API to add ic_car
      */
     @POST("/api/cars")
     fun addCar(): Call<BaseResponse>

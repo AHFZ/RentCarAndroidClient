@@ -11,6 +11,8 @@ import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.io.model.CarResponse
 import ir.ahfz.rentcar.ui.detail.CarDetailActivity
 import kotlinx.android.synthetic.main.item_car.view.*
+import org.koin.core.Koin
+import org.koin.core.KoinApplication
 
 class CarAdapter : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
 
@@ -28,7 +30,7 @@ class CarAdapter : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
         Glide.with(holder.itemView)
             .load("${MyApplication.base_url}/images/${car.img}")
             .centerCrop()
-            .placeholder(R.drawable.rounded_colored)
+            .placeholder(R.drawable.background_rounded_colored)
             .into(holder.itemView.carImageView);
         holder.itemView.brandTextView.text = car.make
         holder.itemView.modelTextView.text = car.model
@@ -41,6 +43,11 @@ class CarAdapter : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
     fun addCarList(cars: List<CarResponse.Car>) {
         this.cars.addAll(cars)
         notifyDataSetChanged()
+    }
+
+    fun setCarList(it: List<CarResponse.Car>) {
+        this.cars.clear()
+        addCarList(it)
     }
 
     inner class CarViewHolder(view: View) : RecyclerView.ViewHolder(view) {

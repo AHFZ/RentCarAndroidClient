@@ -22,7 +22,7 @@
         android:contentDescription="@string/register"
         android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/login_background_3" />
+        android:src="@drawable/background_login" />
 
     <ScrollView
         android:layout_width="match_parent"

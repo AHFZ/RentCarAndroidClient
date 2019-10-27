@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.item_brand.view.*
 
 class BrandAdapter : RecyclerView.Adapter<BrandAdapter.ViewHolder>() {
 
-    val brandList = ArrayList<MakeResponse.Make>()
+    private val brandList = ArrayList<MakeResponse.Make>()
+    private var onClickListener: View.OnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_brand, parent, false))
@@ -27,7 +28,7 @@ class BrandAdapter : RecyclerView.Adapter<BrandAdapter.ViewHolder>() {
             holder.itemView.brandTextView.text = holder.itemView.context.getString(brand.nameResId)
             Glide.with(holder.itemView.brandIdLogoImageView)
                 .load(brand.drawable)
-               // .apply(RequestOptions.circleCropTransform())
+                // .apply(RequestOptions.circleCropTransform())
                 .into(holder.itemView.brandIdLogoImageView)
         } catch (e: Exception) {
         }
@@ -38,5 +39,16 @@ class BrandAdapter : RecyclerView.Adapter<BrandAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    fun setOnBrandItemClickListener(onClickListener: View.OnClickListener) {
+        this.onClickListener = onClickListener
+    }
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        init {
+            view.setOnClickListener {
+                it.tag = brandList[adapterPosition].make
+                onClickListener?.onClick(it)
+            }
+        }
+    }
 }

@@ -16,6 +16,7 @@ import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.ui.authentication.LoginActivity
 import ir.ahfz.rentcar.ui.profile.ProfileDetailActivity
 import ir.ahfz.rentcar.ui.search.SearchCarActivity
+import ir.ahfz.rentcar.ui.setting.SettingActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home_toolbar.*
 import kotlinx.android.synthetic.main.fragment_search.*
@@ -61,6 +62,14 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home), View.OnClickList
 
         list_brand.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         list_brand.adapter = brandAdapter
+        brandAdapter.setOnBrandItemClickListener(View.OnClickListener {
+            startActivity(
+                Intent(this, SearchCarActivity::class.java).putExtra(
+                    "brand",
+                    it.tag.toString()
+                )
+            )
+        })
 
         list_car.layoutManager = LinearLayoutManager(this)
         list_car.adapter = adapter
@@ -73,7 +82,7 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home), View.OnClickList
         })
         homeViewModel.value.userAuthLiveData.observe(this, Observer {
             textViewProfile.text = it?.name ?: getString(R.string.login)
-            ivLogout.visibility = if (it != null) View.VISIBLE else View.INVISIBLE
+            ivLogout.visibility = if (it != null) View.VISIBLE else View.GONE
             waitDialog.dismiss()
         })
         homeViewModel.value.errorLiveData.observe(this, Observer {
@@ -103,5 +112,9 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home), View.OnClickList
             getString(R.string.search_hint)
         ).toBundle()
         startActivity(Intent(this, SearchCarActivity::class.java), toBundle)
+    }
+
+    fun changeIp(view: View) {
+        startActivity(Intent(this, SettingActivity::class.java))
     }
 }

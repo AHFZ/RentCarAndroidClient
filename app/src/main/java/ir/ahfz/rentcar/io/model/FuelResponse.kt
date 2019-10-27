@@ -16,6 +16,9 @@ data class FuelResponse(
         var id: Int = 0,
         var fuel: String? = null,
         var createdAt: String? = null,
-        var updatedAt: String? = null
-    )
+        var updatedAt: String? = null,
+        override var isChecked: Boolean = false
+    ) : Checkable {
+        override fun getTitle(): String? = fuel
+    }
 }

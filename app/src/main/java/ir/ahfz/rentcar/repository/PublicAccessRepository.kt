@@ -50,7 +50,7 @@ class PublicAccessRepository(
     }
 
     /**
-     * API to retrieve car classes
+     * API to retrieve ic_car classes
      */
     suspend fun getClasses(): Response<ClassResponse> {
         return publicAccessWebservice.getClasses().awaitResponse()

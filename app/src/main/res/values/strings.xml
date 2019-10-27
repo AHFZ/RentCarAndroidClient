@@ -57,4 +57,12 @@
     <string name="cars">Cars</string>
     <string name="please_wait">Please wait</string>
     <string name="succssfully_booked">Car successfully booked</string>
+    <string name="date">Date</string>
+    <string name="location">Location</string>
+    <string name="other_option">Other option</string>
+    <string name="pickup">Pickup</string>
+    <string name="_return">Return</string>
+    <string name="car_type">Car Type</string>
+    <string name="transmission">Transmission</string>
+    <string name="filter">Filter</string>
 </resources>

@@ -17,6 +17,7 @@ import ir.ahfz.rentcar.ui.authentication.ResetPasswordViewModel
 import ir.ahfz.rentcar.ui.book.BookCarViewModel
 import ir.ahfz.rentcar.ui.home.HomeViewModel
 import ir.ahfz.rentcar.ui.profile.MyReservationViewModel
+import ir.ahfz.rentcar.ui.search.SearchCarViewModel
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
 import okhttp3.logging.HttpLoggingInterceptor
@@ -79,4 +80,5 @@ val viewModelModule = module {
     viewModel { ResetPasswordViewModel() }
     viewModel { MyReservationViewModel(get(), get()) }
     viewModel { BookCarViewModel(get(), get()) }
+    viewModel { SearchCarViewModel(get(), get()) }
 }

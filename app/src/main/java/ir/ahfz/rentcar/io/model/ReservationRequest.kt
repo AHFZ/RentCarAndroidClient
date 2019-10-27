@@ -5,8 +5,8 @@ import ir.ahfz.rentcar.io.network.BaseRequest
 data class ReservationRequest(
     var pickupDate: String? = null,
     var returnDate: String? = null,
-    var pickupLocation: String? = "0",
-    var returnLocation: String? = "0",
+    var pickupLocation: String? = "2",
+    var returnLocation: String? = "2",
     var pickupTimeH: String? = "00",
     var pickupTimeM: String? = "00",
     var returnTimeH: String? = "00",

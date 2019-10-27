@@ -17,6 +17,9 @@ data class MakeResponse(var makes: List<Make>? = null) : BaseResponse() {
         var id: Int = 0,
         var make: String? = null,
         var createdAt: String? = null,
-        var updatedAt: String? = null
-    )
+        var updatedAt: String? = null,
+        override var isChecked: Boolean = false
+    ) : Checkable {
+        override fun getTitle(): String? = make
+    }
 }

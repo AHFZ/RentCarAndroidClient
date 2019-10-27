@@ -37,7 +37,7 @@ interface PublicAccessWebservice {
     fun getExtras(): Call<ExtraResponse>
 
     /**
-     * API to retrieve car classes
+     * API to retrieve ic_car classes
      */
     @GET("/api/classes")
     fun getClasses(): Call<ClassResponse>

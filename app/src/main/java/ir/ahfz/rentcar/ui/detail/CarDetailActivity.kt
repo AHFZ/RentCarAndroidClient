@@ -3,6 +3,7 @@ package ir.ahfz.rentcar.ui.detail
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,7 +49,7 @@ class CarDetailActivity : AppCompatActivity(R.layout.activity_car_detail) {
     }
 
     public companion object {
-        public const val CAR_DATA = "car"
+        public const val CAR_DATA = "ic_car"
     }
 
     fun bookIt(view: View) {
@@ -58,6 +59,11 @@ class CarDetailActivity : AppCompatActivity(R.layout.activity_car_detail) {
                     CAR_DATA, intent.getParcelableExtra<CarResponse.Car>(CAR_DATA)
                 )
         )
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

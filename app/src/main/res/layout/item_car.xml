@@ -16,7 +16,7 @@
         android:id="@+id/priceTextView"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/semi_rounded_colored"
+        android:background="@drawable/background_semi_rounded_colored"
         android:gravity="center"
         android:maxLines="1"
         android:padding="4dp"

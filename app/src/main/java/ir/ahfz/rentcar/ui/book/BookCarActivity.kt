@@ -3,6 +3,7 @@ package ir.ahfz.rentcar.ui.book
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -12,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.ahfz.rentcar.R
 import ir.ahfz.rentcar.ui.detail.CarDetailActivity
+import kotlinx.android.synthetic.main.activity_book_car.*
 import kotlinx.android.synthetic.main.activity_book_car_content.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,14 +22,14 @@ class BookCarActivity : AppCompatActivity(R.layout.activity_book_car) {
     private val bookCarViewModel = viewModel<BookCarViewModel>()
     private val optionAdapter = OptionAdapter()
 
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
     private fun init() {
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
         bookCarViewModel.value.car = intent.getParcelableExtra(CarDetailActivity.CAR_DATA)!!
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
 
@@ -57,7 +59,39 @@ class BookCarActivity : AppCompatActivity(R.layout.activity_book_car) {
                 show()
             }
         }
-
+        etLocationFrom.setOnClickListener {
+            if (bookCarViewModel.value.cities.isNotEmpty())
+                BottomSheetItemPicker(
+                    bookCarViewModel.value.cities,
+                    "Pickup Location"
+                ) {
+                    bookCarViewModel.value.pickupLocation = it
+                    etLocationFrom.text?.apply {
+                        clear()
+                        append(it.city)
+                    }
+                }
+                    .show(supportFragmentManager, "a")
+            else
+                Toast.makeText(this, "Please wait...", Toast.LENGTH_SHORT).show()
+        }
+        etLocationTo.setOnClickListener {
+            if (bookCarViewModel.value.cities.isNotEmpty())
+                BottomSheetItemPicker(
+                    bookCarViewModel.value.cities,
+                    "Pickup Location"
+                )
+                {
+                    bookCarViewModel.value.returnLocation = it
+                    etLocationTo.text?.apply {
+                        clear()
+                        append(it.city)
+                    }
+                }
+                    .show(supportFragmentManager, "a")
+            else
+                Toast.makeText(this, "Please wait...", Toast.LENGTH_SHORT).show()
+        }
         viewModel.pickupDate.observe(this, Observer {
             etFrom.text!!.clear()
             etFrom.text!!.append(it)
@@ -72,6 +106,11 @@ class BookCarActivity : AppCompatActivity(R.layout.activity_book_car) {
         viewModel.errorLiveData.observe(this, Observer {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return super.onOptionsItemSelected(item)
     }
 
     fun bookIt(view: View) {

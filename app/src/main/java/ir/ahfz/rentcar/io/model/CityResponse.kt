@@ -16,5 +16,10 @@ data class CityResponse(var cities: List<City>? = null) : BaseResponse() {
         var postcode: String? = null,
         var createdAt: String? = null,
         var updatedAt: String? = null
-    )
+    ) {
+
+        override fun toString(): String {
+            return this.city.toString()
+        }
+    }
 }

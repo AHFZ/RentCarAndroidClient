@@ -11,8 +11,10 @@ class SharePreferencesRepository(context: Context) {
     /**
      * Gets server url
      */
-    fun getServerURL(): String = sharedPreferences.getString("server_url", MyApplication.base_url)!!
-
+    fun getServerURL(): String {
+        MyApplication.base_url = sharedPreferences.getString("server_url", "http://192.168.1.100")!!
+        return MyApplication.base_url
+    }
 
     /**
      * Sets server url
@@ -23,6 +25,7 @@ class SharePreferencesRepository(context: Context) {
             if (!newUrl.startsWith("http://"))
                 newUrl = "http://$newUrl"
             sharedPreferences.edit().putString("server_url", newUrl).apply()
+            MyApplication.base_url = url
         }
     }
 

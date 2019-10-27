@@ -13,13 +13,13 @@ class CarSpecAdapter : RecyclerView.Adapter<CarSpecAdapter.ViewHolder>() {
 
     private var car: CarResponse.Car? = null
     private val icons = arrayOf(
-        R.drawable.currency_usd,
-        R.drawable.car_shift_pattern,
-        R.drawable.gas_station,
-        R.drawable.car_seat,
-        R.drawable.car_info,
-        R.drawable.format_color_fill,
-        R.drawable.calendar
+        R.drawable.ic_currency_usd,
+        R.drawable.ic_car_transmission,
+        R.drawable.ic_gas_station,
+        R.drawable.ic_car_seat,
+        R.drawable.ic_car_info,
+        R.drawable.ic_format_color_fill,
+        R.drawable.ic_calendar
     )
     private val titles = arrayOf(
         R.string.price_per_day,

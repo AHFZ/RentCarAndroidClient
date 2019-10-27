@@ -16,22 +16,18 @@
         android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/background_rounded_gray"
-        android:focusable="false"
         android:hint="@string/search_hint"
         android:padding="12dp"
-        android:windowSoftInputMode="stateAlwaysHidden"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/frameLayout_filter"
+        app:layout_constraintEnd_toStartOf="@+id/frameLayoutFilter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-        android:id="@+id/frameLayout_search"
+        android:id="@+id/frameLayoutSearch"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="?selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/etSearch"
         app:layout_constraintEnd_toEndOf="@+id/etSearch"
@@ -46,7 +42,7 @@
 
 
     <FrameLayout
-        android:id="@+id/frameLayout_filter"
+        android:id="@+id/frameLayoutFilter"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="@drawable/background_rounded_accent"
