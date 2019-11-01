@@ -13,9 +13,6 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
 
     private val viewModel: SearchCarViewModel by sharedViewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,6 +22,11 @@ class FilterFragment : Fragment(R.layout.fragment_filter) {
 
     private fun initUI() {
         tvFilter.setOnClickListener {
+            viewModel.setFilterCarType((listCarType.adapter as CheckableAdapter).getCheckedItem())
+            viewModel.setFilterFuel((listFuelType.adapter as CheckableAdapter).getCheckedItem())
+            viewModel.setFilterBrand((listBrand.adapter as CheckableAdapter).getCheckedItem())
+            viewModel.setFilterTransmission((listTransmission.adapter as CheckableAdapter).getCheckedItem())
+            viewModel.filter(null)
             activity?.onBackPressed()
         }
 

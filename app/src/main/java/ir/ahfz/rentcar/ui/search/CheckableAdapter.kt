@@ -26,16 +26,25 @@ class CheckableAdapter : RecyclerView.Adapter<CheckableAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = checkableItems[position]
         holder.itemView.text.text = item.getTitle()
-         if (item.isChecked) {
-             holder.itemView.setBackgroundResource(R.drawable.border_rounded_accent)
-         } else {
-             holder.itemView.setBackgroundResource(R.drawable.border_rounded_gray)
-         }
+        if (item.isChecked) {
+            holder.itemView.setBackgroundResource(R.drawable.border_rounded_accent)
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.border_rounded_gray)
+        }
     }
 
     fun addItems(checkableItems: List<Checkable>) {
         this.checkableItems.addAll(checkableItems)
         notifyDataSetChanged()
+    }
+
+    fun getCheckedItem(): List<Checkable> {
+        val checkedItem = ArrayList<Checkable>()
+        checkableItems.forEach {
+            if (it.isChecked)
+                checkedItem.add(it)
+        }
+        return checkedItem
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +34,9 @@ class SearchCarActivity : AppCompatActivity(R.layout.activity_car_list), TextWat
         etSearch.addTextChangedListener(this)
         viewModel.carList.observe(this, Observer {
             adapter.setCarList(it)
+        })
+        viewModel.errorLiveData.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
     }
 
