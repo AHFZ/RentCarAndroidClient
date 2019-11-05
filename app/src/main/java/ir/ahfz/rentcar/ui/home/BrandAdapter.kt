@@ -35,7 +35,8 @@ class BrandAdapter : RecyclerView.Adapter<BrandAdapter.ViewHolder>() {
     }
 
     fun addBrandList(it: List<MakeResponse.Make>?) {
-        brandList.addAll(it!!)
+        it ?: return
+        brandList.addAll(it)
         notifyDataSetChanged()
     }
 

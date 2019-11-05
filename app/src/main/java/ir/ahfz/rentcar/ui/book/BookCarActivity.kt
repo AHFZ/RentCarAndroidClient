@@ -1,13 +1,11 @@
 package ir.ahfz.rentcar.ui.book
 
 import android.app.DatePickerDialog
-import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -114,6 +112,14 @@ class BookCarActivity : AppCompatActivity(R.layout.activity_book_car) {
     }
 
     fun bookIt(view: View) {
+        if (etFrom.text.isNullOrBlank() ||
+            etTo.text.isNullOrBlank() ||
+            etLocationFrom.text.isNullOrBlank() ||
+            etLocationTo.text.isNullOrBlank()
+        ) {
+            Toast.makeText(this, "Please complete the form.", Toast.LENGTH_LONG).show()
+            return
+        }
         bookCarViewModel.value.bookIt(this)
     }
 }

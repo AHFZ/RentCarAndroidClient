@@ -23,6 +23,10 @@ class SearchCarActivity : AppCompatActivity(R.layout.activity_car_list), TextWat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val brand = intent.getStringExtra("brand")
+        if (brand != null)
+            viewModel.filterCarBrand.add(brand)
+        viewModel.filter(null)
         frameLayoutFilter.setOnClickListener {
             TransitionManager.beginDelayedTransition(rootLayout)
             fragmentContainer.visibility = View.VISIBLE

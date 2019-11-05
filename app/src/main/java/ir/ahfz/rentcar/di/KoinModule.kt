@@ -79,6 +79,6 @@ val viewModelModule = module {
     viewModel { RegistrationViewModel(get()) }
     viewModel { ResetPasswordViewModel() }
     viewModel { MyReservationViewModel(get(), get()) }
-    viewModel { BookCarViewModel(get(), get()) }
+    viewModel { BookCarViewModel(get(), get(), get(), get()) }
     viewModel { SearchCarViewModel(get(), get()) }
 }

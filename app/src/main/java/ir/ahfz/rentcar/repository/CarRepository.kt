@@ -12,7 +12,7 @@ class CarRepository(private val carDao: CarDao) {
         return carDao.getAllCarLive()
     }
 
-    fun getAllCars(): List<CarResponse.Car> {
+    suspend fun getAllCars(): List<CarResponse.Car> {
         return carDao.getAllCar()
     }
 

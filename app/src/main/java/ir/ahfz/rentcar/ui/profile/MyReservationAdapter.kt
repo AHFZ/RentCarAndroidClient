@@ -26,8 +26,12 @@ class MyReservationAdapter : RecyclerView.Adapter<MyReservationAdapter.ViewHolde
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val reservation = reservationList[position]
-        holder.itemView.tvModel.text = reservation.model
-        holder.itemView.tvBrand.text = reservation.make
+        holder.itemView.tvTitle.text = "${reservation.model} (${reservation.make})"
+        holder.itemView.tvSubTitle.text =
+            reservation.pickupDate?.substring(0..10) + " - " + reservation.returnDate?.substring(0..10)
+        holder.itemView.tvPrice.text = reservation.price + " $"
+        holder.itemView.tvIndex.text = (reservationList.size - position).toString()
+
         val backgroundColor = when {
             reservation.isCompleted == 1 -> Color.parseColor("#03a9f4")
             reservation.isPaid == 1 -> Color.parseColor("#4caf50")

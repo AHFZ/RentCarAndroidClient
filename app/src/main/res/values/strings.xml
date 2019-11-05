@@ -65,4 +65,6 @@
     <string name="car_type">Car Type</string>
     <string name="transmission">Transmission</string>
     <string name="filter">Filter</string>
+    <string name="server_address">Server Address</string>
+    <string name="setting">Setting</string>
 </resources>

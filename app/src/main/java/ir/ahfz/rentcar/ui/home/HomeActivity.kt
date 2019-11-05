@@ -64,10 +64,8 @@ class HomeActivity : AppCompatActivity(R.layout.activity_home), View.OnClickList
         list_brand.adapter = brandAdapter
         brandAdapter.setOnBrandItemClickListener(View.OnClickListener {
             startActivity(
-                Intent(this, SearchCarActivity::class.java).putExtra(
-                    "brand",
-                    it.tag.toString()
-                )
+                Intent(this, SearchCarActivity::class.java)
+                    .putExtra("brand", it.tag.toString())
             )
         })
 

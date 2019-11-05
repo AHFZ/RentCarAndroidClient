@@ -7,6 +7,7 @@ import ir.ahfz.rentcar.io.model.*
 import ir.ahfz.rentcar.repository.CarRepository
 import ir.ahfz.rentcar.repository.PublicAccessRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SearchCarViewModel(
@@ -55,15 +56,15 @@ class SearchCarViewModel(
     }
 
     private fun load() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
             val classes = publicAccessRepository.getClasses()
             this@SearchCarViewModel.classes.postValue(classes.body())
         }
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO + exceptionHandler)  {
             val makes = publicAccessRepository.getMakes()
             this@SearchCarViewModel.makes.postValue(makes.body())
         }
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO + exceptionHandler)  {
             val fuels = publicAccessRepository.getFuels()
             this@SearchCarViewModel.fuels.postValue(fuels.body())
         }
